@@ -1,4 +1,4 @@
-FROM microsoft/powershell
+FROM mcr.microsoft.com/powershell
 RUN apt-get update
 RUN apt-get install git -y
 RUN git clone https://github.com/MrTechGadget/aw-bulkdevices-script.git
@@ -9,8 +9,9 @@ ENV host="host.domain.tld"
 COPY start.sh /
 COPY buildConfig.sh /
 RUN chmod +x /start.sh /buildConfig.sh
-RUN chmod +rw /aw-bulkdevices-script
+RUN chmod o+rw /aw-bulkdevices-script
 RUN ls -la
 RUN /start.sh
+RUN ls -la aw-bulkdevices-script
 
 ENTRYPOINT /start.sh
