@@ -9,10 +9,10 @@ ENV host="host.domain.tld"
 COPY start.sh /
 COPY buildConfig.sh /
 RUN chmod +x /start.sh /buildConfig.sh
-RUN chmod o+rw /aw-bulkdevices-script
+RUN chmod -R ugo+rw /aw-bulkdevices-script
 RUN ls -la
 RUN /start.sh
-RUN chmod 666 /aw-bulkdevices-script/AirWatchConfig.json
+RUN chmod -R ugo+rw /aw-bulkdevices-script
 RUN ls -la aw-bulkdevices-script
 
 ENTRYPOINT /start.sh
