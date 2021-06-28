@@ -10,6 +10,7 @@ COPY start.sh /
 COPY buildConfig.sh /
 RUN chmod +x /start.sh /buildConfig.sh
 RUN chmod +rw /aw-bulkdevices-script
+RUN ls -la
 RUN /start.sh
 
 ENTRYPOINT /start.sh
